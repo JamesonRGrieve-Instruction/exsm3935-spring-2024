@@ -3,9 +3,9 @@
 // eslint-disable-next-line no-unused-vars
 async function main() {
   // This is where the code you're actually experimenting with goes.
-  let firstOperand = await input("Enter the first number: ");
-  let secondOperand = await input("Enter the second number: ");
-  let result = firstOperand * secondOperand;
+  const firstOperand = await input("Enter the first number: ");
+  const secondOperand = await input("Enter the second number: ");
+  const result = firstOperand / secondOperand;
   output(result);  
 }
 
