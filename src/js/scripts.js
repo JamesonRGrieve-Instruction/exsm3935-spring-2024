@@ -8,6 +8,7 @@ async function main() {
   const quotient = Math.floor(firstOperand / secondOperand);
   const remainder = firstOperand % secondOperand;
   output(`${quotient}R${remainder}`);  
+  output(quotient + "R" + remainder);
 }
 
 
