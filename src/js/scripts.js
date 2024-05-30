@@ -2,24 +2,29 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  // This is where the code you're actually experimenting with goes.
-  const userInput = Number(await input("Please enter a number: "));
-  if (userInput > 10) {
-    output("Greater than 10!");
+  const userInput = (await input("Please enter a number from 1-5: ")).trim();
+  switch (userInput) {
+    case "1":
+      output("You entered 1");
+      break;
+    // If you "stack" multiple cases, it functions sort of like an OR statement.
+    case "2":
+    case "two":
+      output("You entered 2");
+      break;
+    case "3":
+      output("You entered 3");
+      // If you omit the 'break', the program will "fall through" into the next case.
+    case "4":
+      output("You entered 4");
+      break;
+    case "5":
+      output("You entered 5");
+      break;
+    default:
+      output("You did not enter a number from 1-5");
+      break;
   }
-  // Since the decision immedately follows the "else" keyword, it is treated as the sole child of the "else" statement.
-  // This allows us to have all of our multi-branch/nested decision branches share a single tab-stop.
-  else if (userInput > 5) {
-    output("Greater than 5!");
-  }
-  else {
-    output("Less than or equal to 5!");
-  }
-
-  // The following is an example of a decision without a code block.
-  // Generally we try to avoid these, excepting scenarios where it benefits readability as above.
-  if (true) output("True");
-  
 }
 
 
