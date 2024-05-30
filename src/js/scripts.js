@@ -7,14 +7,19 @@ async function main() {
   if (userInput > 10) {
     output("Greater than 10!");
   }
-  else {
-    if (userInput > 5) {
-      output("Greater than 5!");
-    }
-    else {
-      output("Less than or equal to 5!");
-    }
+  // Since the decision immedately follows the "else" keyword, it is treated as the sole child of the "else" statement.
+  // This allows us to have all of our multi-branch/nested decision branches share a single tab-stop.
+  else if (userInput > 5) {
+    output("Greater than 5!");
   }
+  else {
+    output("Less than or equal to 5!");
+  }
+
+  // The following is an example of a decision without a code block.
+  // Generally we try to avoid these, excepting scenarios where it benefits readability as above.
+  if (true) output("True");
+  
 }
 
 
