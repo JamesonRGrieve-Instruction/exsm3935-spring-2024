@@ -14,7 +14,7 @@ async function main() {
       break;
     case "3":
       output("You entered 3");
-      // If you omit the 'break', the program will "fall through" into the next case.
+    // If you omit the 'break', the program will "fall through" into the next case.
     case "4":
       output("You entered 4");
       break;
@@ -26,11 +26,9 @@ async function main() {
       break;
   }
 
-
   if (userInput === "1") {
     output("You entered 1");
-  } 
-  else if (userInput === "2" || userInput === "two") {
+  } else if (userInput === "2" || userInput === "two") {
     output("You entered 2");
   }
   // else if (["3", "4"].includes(userInput))
@@ -39,14 +37,9 @@ async function main() {
       output("You entered 3");
     }
     output("You entered 4");
-  }
-  else if (userInput === "5") {
+  } else if (userInput === "5") {
     output("You entered 5");
-  }
-  else {
+  } else {
     output("You did not enter a number from 1-5");
   }
 }
-
-
-
