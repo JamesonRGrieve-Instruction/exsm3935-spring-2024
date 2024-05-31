@@ -2,44 +2,14 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  const userInput = (await input("Please enter a number from 1-5: ")).trim();
-  switch (userInput) {
-    case "1":
-      output("You entered 1");
-      break;
-    // If you "stack" multiple cases, it functions sort of like an OR statement.
-    case "2":
-    case "two":
-      output("You entered 2");
-      break;
-    case "3":
-      output("You entered 3");
-    // If you omit the 'break', the program will "fall through" into the next case.
-    case "4":
-      output("You entered 4");
-      break;
-    case "5":
-      output("You entered 5");
-      break;
-    default:
-      output("You did not enter a number from 1-5");
-      break;
-  }
-
-  if (userInput === "1") {
-    output("You entered 1");
-  } else if (userInput === "2" || userInput === "two") {
-    output("You entered 2");
-  }
-  // else if (["3", "4"].includes(userInput))
-  else if (userInput === "3" || userInput === "4") {
-    if (userInput === "3") {
-      output("You entered 3");
-    }
-    output("You entered 4");
-  } else if (userInput === "5") {
-    output("You entered 5");
+  const userInput = await input("Please enter a string: ");
+  let spaceNumber;
+  if (userInput.includes(" ")) {
+    // If we use the let keyword inside a code block, we cannot reference the variable we have declared outside of the enclosing code block.
+    // Therefore, we must declare the variable outside of the code block, and assign the value herein.
+    spaceNumber = userInput.split(" ").length - 1;
   } else {
-    output("You did not enter a number from 1-5");
+    spaceNumber = 0;
   }
+  output("The number of spaces in the string is: " + spaceNumber);
 }
