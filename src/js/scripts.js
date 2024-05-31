@@ -4,19 +4,21 @@
 async function main() {
   const username = (await input("Please enter your username: ")).trim();
   if (username === "") {
-    output("You did not enter a username - it cannot be blank.");
-  } else if (username !== "admin") {
-    output("The provider username does not match any accounts on record.");
-  } else {
-    const password = (await input("Please enter your password: ")).trim();
-    if (password === "") {
-      output("You did not enter a password - it cannot be blank.");
-    } else if (password.length() < 8) {
-      output("The password you entered is too short - it must be at least 8 characters long.");
-    } else if (password !== "adminpwd") {
-      output("The password you entered is incorrect.");
-    } else {
-      output("You have successfully logged in!");
-    }
+    throw new Error("You did not enter a username - it cannot be blank.");
   }
+  if (username !== "admin") {
+    throw new Error("The provider username does not match any accounts on record.");
+  }
+
+  const password = (await input("Please enter your password: ")).trim();
+  if (password === "") {
+    throw new Error("You did not enter a password - it cannot be blank.");
+  }
+  if (password.length < 8) {
+    throw new Error("The password you entered is too short - it must be at least 8 characters long.");
+  }
+  if (password !== "adminpwd") {
+    throw new Error("The password you entered is incorrect.");
+  }
+  output("You have successfully logged in!");
 }
