@@ -9,13 +9,9 @@ async function main() {
     }
   } catch (error) {
     output(error.message);
+    throw new Error("I'm throwing another error as an example.");
+  } finally {
+    output("This is the finally.");
   }
-
-  try {
-    if (userInput.trim() === "error") {
-      throw new Error("I was told to throw an error so I did.");
-    }
-  } catch (error) {
-    output(error.message);
-  }
+  output("This is the end of the try/catch/finally block.");
 }
