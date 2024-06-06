@@ -2,12 +2,15 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
+  const userInput = await input("Please enter a string: ");
   try {
-    const userInput = await input("Please enter a string: ");
-    if (userInput.trim() === "") {
-      throw new Error("A value was not provided to userInput.");
+    if (userInput.trim()[0] === "e") {
+      throw new Error("The value started with e.");
+    }
+    if (userInput.trim() === "error") {
+      throw new Error("I was told to throw an error so I did.");
     }
   } catch (error) {
-    output(error);
+    output(error.message);
   }
 }
