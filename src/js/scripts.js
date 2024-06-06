@@ -2,16 +2,19 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  const userInput = await input("Please enter a string: ");
+  const passwordInput = await input("Please enter a password: ");
   try {
-    if (userInput.trim()[0] === "e") {
-      throw new Error("The value started with e.");
+    if (passwordInput.trim() === "") {
+      throw new Error("You did not enter a password.");
     }
+    if (passwordInput.length < 8) {
+      throw new Error("Your password is too short.");
+    }
+    if (passwordInput.includes(" ")) {
+      throw new Error("Your password cannot contain spaces.");
+    }
+    output("Your password is valid.");
   } catch (error) {
     output(error.message);
-    throw new Error("I'm throwing another error as an example.");
-  } finally {
-    output("This is the finally.");
   }
-  output("This is the end of the try/catch/finally block.");
 }
