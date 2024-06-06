@@ -7,6 +7,11 @@ async function main() {
     if (userInput.trim()[0] === "e") {
       throw new Error("The value started with e.");
     }
+  } catch (error) {
+    output(error.message);
+  }
+
+  try {
     if (userInput.trim() === "error") {
       throw new Error("I was told to throw an error so I did.");
     }
