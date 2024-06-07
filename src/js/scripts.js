@@ -2,13 +2,26 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  // This is where the code you're actually experimenting with goes.
-  let leftOperand = await input("Please enter a number: ");
-  let rightOperand = await input("Please enter another number: ");
-  // Because we don't know decisions yet, entering something that isn't a number will cause the result to be NaN (Not a Number).
-  let sum = Number(leftOperand) + Number(rightOperand);
-  output(sum);
+  try {
+    const username = (await input("Please enter your username: ")).trim();
+    if (username === "") {
+      throw new Error("Username cannot be empty.");
+    }
+    if (username !== "admin") {
+      throw new Error("Username does not exist.");
+    }
+    const password = (await input("Please enter your password: ")).trim();
+    if (password === "") {
+      throw new Error("Password cannot be empty.");
+    }
+    if (password.length < 8) {
+      throw new Error("Password is too short.");
+    }
+    if (password !== "adminpwd") {
+      throw new Error("Password is incorrect.");
+    }
+    output("Login successful.");
+  } catch (error) {
+    output(error);
+  }
 }
-
-
-
