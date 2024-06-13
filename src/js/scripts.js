@@ -2,19 +2,39 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  const mySet = new Set();
-  mySet.add(1);
-  mySet.add(5);
-  mySet.add(5);
-  mySet.add(5);
-  mySet.add(10);
-  mySet.add(3);
+  const myDictionary = {
+    James: "Grieve",
+    Golden: "Delicious",
+    Granny: "Smith",
+    Red: "Delicious",
+    "Cox's": "Orange",
+    Fuji: "Apple",
+  };
 
-  output([...mySet]);
+  output(myDictionary["James"]);
+  output(myDictionary.James);
 
-  mySet.delete(5);
-  output([...mySet]);
+  output(myDictionary["Cox's"]);
 
-  mySet.clear();
-  output([...mySet]);
+  myDictionary["Test"] = "Test123";
+  output(myDictionary.Test);
+
+  myDictionary.Test = "Test456";
+  output(myDictionary.Test);
+
+  delete myDictionary.Test;
+  output(myDictionary.Test);
+
+  myDictionary.James = undefined;
+  output(myDictionary.James);
+
+  output(Object.keys(myDictionary));
+  output(Object.values(myDictionary));
+
+  delete myDictionary.James;
+
+  output(Object.keys(myDictionary));
+  output(Object.values(myDictionary));
+
+  output(Object.entries(myDictionary));
 }
