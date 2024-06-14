@@ -2,11 +2,6 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  output("Welcome to the Program");
-  output("1. Read Items");
-  output("2. Add Item");
-  output("3. Delete Item");
-  output("4. Update Item");
-  output("5. Exit");
+  output("Welcome to the Program\n1. Read Items\n2. Add Item\n3. Delete Item\n4. Update Item\n5. Exit");
   let choice = await input("Enter your choice: ");
 }
