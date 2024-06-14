@@ -37,6 +37,7 @@ async function main() {
   output(Object.values(myDictionary));
 
   output(Object.entries(myDictionary));
+  output(Object.entries(myDictionary).join("\n"));
 
   const myArray = [1, 2, 3, 4];
   myArray[9] = 10;
