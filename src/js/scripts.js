@@ -24,6 +24,9 @@ async function main() {
       throw new Error("Invalid quantity - must be between 1 and 100 inclusive.");
     }
     orderQtys.push(orderQty);
+
+    output([...orders]); // "Spread" syntax - converts the set to an array since sets don't convert to strings well.
+    output(orderQtys);
   } catch (error) {
     output(error.message);
   }
