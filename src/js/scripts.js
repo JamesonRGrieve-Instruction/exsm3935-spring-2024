@@ -2,13 +2,11 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  // This is where the code you're actually experimenting with goes.
-  let leftOperand = await input("Please enter a number: ");
-  let rightOperand = await input("Please enter another number: ");
-  // Because we don't know decisions yet, entering something that isn't a number will cause the result to be NaN (Not a Number).
-  let sum = Number(leftOperand) + Number(rightOperand);
-  output(sum);
+  output("Welcome to the Program");
+  output("1. Read Items");
+  output("2. Add Item");
+  output("3. Delete Item");
+  output("4. Update Item");
+  output("5. Exit");
+  let choice = await input("Enter your choice: ");
 }
-
-
-
