@@ -2,14 +2,15 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  let userInput = "";
+  let userInput;
   do {
     output("Welcome to the Main Menu\n1. Do Something\n2. Do Something Else\n0. Exit\n");
-    let valid = false;
+    let valid;
     do {
       userInput = (await input("Make a selection: ")).trim();
       valid = ["0", "1", "2"].includes(userInput);
       if (!valid) {
+        // Same as if (valid === false)
         output("Invalid selection. Please try again.");
       }
     } while (!valid);
