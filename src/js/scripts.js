@@ -9,8 +9,10 @@ async function main() {
     userInput = await input("Please enter another value: ");
   } // The difference between a decision (if) and a while loop (while) is that at the end of the code block, the condition runs again.
 
+  // Pre-Test Loop
   // Initialization
-  let iterator = 0;
+  output("--- Pre-Test Loop: ---");
+  let iterator = 10;
   // Test
   while (iterator < 10) {
     // Process
@@ -18,6 +20,19 @@ async function main() {
     // Modify / Update
     iterator++; // iterator = iterator + 1;
   }
+
+  // Post-Test Loop
+  // Initialization
+  output("--- Post-Test Loop: ---");
+  iterator = 10;
+  do {
+    // Process
+    output(iterator);
+    // Modify / Update
+    iterator++; // iterator = iterator + 1;
+  } while (iterator < 10);
+
+  output("--- For (Pre-Test) Loop: ---");
 
   for (let i = 0 /* Initialization */; i < 10 /* Test */; i++ /* Modify */) {
     // Process
