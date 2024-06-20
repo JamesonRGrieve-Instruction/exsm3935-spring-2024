@@ -2,69 +2,30 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  let userInput = await input("Please enter a value: ");
-  // A sentinel value loop is a loop that continues until a specific value is entered.
-  while (userInput.trim().toLowerCase() !== "exit") {
-    output("You entered: " + userInput);
-    userInput = await input("Please enter another value: ");
-  } // The difference between a decision (if) and a while loop (while) is that at the end of the code block, the condition runs again.
-
-  // Pre-Test Loop
-  // Initialization
-  output("--- Pre-Test Loop: ---");
-  let iterator = 10;
-  // Test
-  while (iterator < 10) {
-    // Process
-    output(iterator);
-    // Modify / Update
-    iterator++; // iterator = iterator + 1;
-  }
-
-  // Post-Test Loop
-  // Initialization
-  output("--- Post-Test Loop: ---");
-  iterator = 10;
+  let userInput = "";
   do {
-    // Process
-    output(iterator);
-    // Modify / Update
-    iterator++; // iterator = iterator + 1;
-  } while (iterator < 10);
+    output("Welcome to the Main Menu\n1. Do Something\n2. Do Something Else\n0. Exit\n");
+    let valid = false;
+    do {
+      userInput = (await input("Make a selection: ")).trim();
+      valid = ["0", "1", "2"].includes(userInput);
+      if (!valid) {
+        output("Invalid selection. Please try again.");
+      }
+    } while (!valid);
+    // This is where your logic for your menu items goes.
+    if (userInput === "1") {
+      output("You selected Do Something");
+    } else if (userInput === "2") {
+      output("You selected Do Something Else");
+    }
 
-  output("--- For (Pre-Test) Loop: ---");
-
-  for (let i = 0 /* Initialization */; i < 10 /* Test */; i++ /* Modify */) {
-    // Process
-    output(i);
-  }
-
-  // Iterating over an array with a for loop:
-  const myArray = ["Hello", "World", "Yes", "No"];
-  for (let i = 0 /* Initialization */; i < myArray.length /* Test */; i++ /* Modify */) {
-    // Process
-    output(myArray[i]);
-  }
-
-  // Iterating over an array with a for-of loop:
-  for (const stringValue of myArray) {
-    output(stringValue);
-  }
-  // For-of loops are used to iterate over the values of an array (cannot count arbitrary values). They are much easier to maintain and read because instead of indexing the array every time you want the value, you can just use the variable/constant you declared in the for-of loop which will be filled with one array element per iteration.
-
-  // The same as above, but for dictionaries:
-  const myDictionary = {
-    key1: "Hello",
-    key2: "World",
-    key3: "Yes",
-  };
-  for (let i = 0; i < Object.keys(myDictionary).length; i++) {
-    // Process
-    output(myDictionary[Object.keys(myDictionary)[i]]);
-  }
-
-  for (const key of Object.keys(myDictionary)) {
-    // Process
-    output(myDictionary[key]);
-  }
+    // If you'd like, you can use this in lieu of the above inner do-while loop, however note that the menu will be displayed each time an invalid entry is made.
+    /*
+    else if (userInput !== "0") {
+      output("Invalid selection. Please try again.");
+    }
+    */
+  } while (userInput !== "0");
+  output("Goodbye!");
 }
