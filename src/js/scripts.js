@@ -20,11 +20,12 @@ async function main() {
   do {
     productCode = await input("Please enter a product code (or END to exit): ");
     let found = false;
-    for (const product of inventory) {
-      if (productCode === product[0]) {
+    for (let i = 0; i < inventory.length && !found; i++) {
+      if (Number(productCode) === inventory[i][0]) {
         found = true;
-        totalPrice += product[2]; // same as totalPrice = totalPrice + product[2]
-        receipt.push(product);
+        totalPrice += inventory[i][2]; // same as totalPrice = totalPrice + product[2]
+        output("Added " + inventory[i][1] + " to the receipt.");
+        receipt.push(inventory[i]);
       }
     }
     if (!found && productCode !== "END") {
