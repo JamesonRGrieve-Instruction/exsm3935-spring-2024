@@ -20,12 +20,24 @@ async function main() {
   do {
     productCode = await input("Please enter a product code (or END to exit): ");
     let found = false;
-    for (let i = 0; i < inventory.length && !found; i++) {
-      if (Number(productCode) === inventory[i][0]) {
+    for (let inventoryItemIndex = 0; inventoryItemIndex < inventory.length && !found; inventoryItemIndex++) {
+      if (Number(productCode) === inventory[inventoryItemIndex][0]) {
         found = true;
-        totalPrice += inventory[i][2]; // same as totalPrice = totalPrice + product[2]
-        output("Added " + inventory[i][1] + " to the receipt.");
-        receipt.push(inventory[i]);
+        totalPrice += inventory[inventoryItemIndex][2]; // same as totalPrice = totalPrice + product[2]
+        output("Added " + inventory[inventoryItemIndex][1] + " to the receipt.");
+        let receiptFound = false;
+
+        // Check every item on the receipt to see if our new item is already present - if so, incement the quantity.
+        for (let receiptItemIndex = 0; receiptItemIndex < receipt.length && !receiptFound; receiptItemIndex++) {
+          if (receipt[receiptItemIndex][0] === Number(productCode)) {
+            receipt[receiptItemIndex][3]++;
+            receiptFound = true;
+          }
+        }
+        // If not, add it to the receipt.
+        if (!receiptFound) {
+          receipt.push(inventory[inventoryItemIndex].concat([1]));
+        }
       }
     }
     if (!found && productCode !== "END") {
@@ -34,6 +46,6 @@ async function main() {
   } while (productCode !== "END");
   output("Total price: $" + totalPrice.toFixed(2));
   for (const item of receipt) {
-    output(item[1] + " - $" + item[2].toFixed(2));
+    output(item[1] + " - $" + item[2].toFixed(2) + ", Quantity: " + item[3]);
   }
 }
