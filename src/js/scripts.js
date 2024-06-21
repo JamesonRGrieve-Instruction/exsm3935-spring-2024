@@ -2,50 +2,34 @@
 /* global output, input */
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  let menuChoice;
+  const inventory = [
+    [1234, "Apple", 0.75],
+    [1235, "Orange", 0.99],
+    [1236, "Banana", 0.25],
+    [1237, "Peach", 1.25],
+    [1238, "Plum", 0.5],
+    [1239, "Grape", 2.0],
+    [1240, "Watermelon", 5.0],
+    [1241, "Pineapple", 3.5],
+    [1242, "Strawberry", 2.5],
+    [1243, "Blueberry", 3.0],
+  ];
+  let productCode;
+  let totalPrice = 0;
+  const receipt = [];
   do {
-    output(
-      "Welcome to the Validator\n1. String Checker\n2. Integer Checker\n3. Year Checker\n4. Date Checker\n5. Quit Application",
-    );
-    menuChoice = (await input("Please make a selection: ")).trim();
-    if (menuChoice === "1") {
-      const testValue = await input("Please enter a string to check: ");
-      if (/\d/.test(testValue)) {
-        output("The string contains numbers.");
-      } else {
-        output("The string is valid (no numbers).");
+    productCode = await input("Please enter a product code (or END to exit): ");
+    let found = false;
+    for (const product of inventory) {
+      if (productCode === product[0]) {
+        found = true;
+        totalPrice += product[2]; // same as totalPrice = totalPrice + product[2]
+        receipt.push(product);
       }
-    } else if (menuChoice === "2") {
-      const testValue = await input("Please enter a string to check: ");
-      if (!Number.isInteger(Number(testValue))) {
-        output("The number provider is not an integer.");
-      } else {
-        output("The provided value is valid (integer).");
-      }
-    } else if (menuChoice === "3") {
-      const testValue = await input("Please enter a string to check: ");
-      if (!Number.isInteger(Number(testValue)) || Number(testValue) < 1900 || Number(testValue) > new Date().getFullYear()) {
-        output("The year is not valid.");
-      } else {
-        output("The year is valid.");
-      }
-    } else if (menuChoice === "4") {
-      const splitSections = (await input("Please enter a date to check (YYYY-MM-DD): ")).split("-");
-      if (
-        splitSections.length !== 3 ||
-        splitSections[0] < 1900 ||
-        splitSections[0] > new Date().getFullYear() ||
-        splitSections[1] < 1 ||
-        splitSections[1] > 12 ||
-        splitSections[2] < 1 ||
-        splitSections[2] > 31
-      ) {
-        output("The date is not valid.");
-      } else {
-        output("The date is valid.");
-      }
-    } else if (menuChoice !== "5") {
-      output("Invalid choice, please try again.");
     }
-  } while (menuChoice !== "5");
+    if (!found && productCode !== "END") {
+      await output("Product not found!");
+    }
+  } while (productCode !== "END");
+  output("Total price: $" + totalPrice.toFixed(2));
 }
