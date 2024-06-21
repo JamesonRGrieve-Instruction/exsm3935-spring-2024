@@ -33,4 +33,7 @@ async function main() {
     }
   } while (productCode !== "END");
   output("Total price: $" + totalPrice.toFixed(2));
+  for (const item of receipt) {
+    output(item[1] + " - $" + item[2].toFixed(2));
+  }
 }
