@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-/* global output, input */
+/* global output, input, clear */
 // eslint-disable-next-line no-unused-vars
 async function main() {
   let userMenuSelection;
   const users = {};
   let loggedIn = false;
   do {
+    clear();
     output("Welcome to the login page.\n1. Register\n2. Login\n3. Exit");
     userMenuSelection = (await input("Please make a selection: ")).trim();
     if (userMenuSelection === "1") {

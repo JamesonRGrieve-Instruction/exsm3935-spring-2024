@@ -34,6 +34,9 @@ async function input(string) {
   proceed = false;
   return text;
 }
+function clear() {
+  outputPanel.innerHTML = "";
+}
 function submit() {
   proceed = true;
 }
