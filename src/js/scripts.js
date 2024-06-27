@@ -18,13 +18,13 @@ function validateInt(value, min, max) {
   return !(value < min || value > max);
 }
 
-// eslint-disable-next-line no-unused-vars
-async function main() {
+async function getValidInt(prompt, min, max) {
   let valid;
+  let userInput;
   do {
-    const userInput = await input("Enter a number between 1 and 10: ");
+    userInput = await input(prompt);
     try {
-      valid = validateInt(userInput, 1, 10);
+      valid = validateInt(userInput, min, max);
       if (!valid) {
         output("You entered an invalid number, please try again");
       }
@@ -32,4 +32,15 @@ async function main() {
       output(error);
     }
   } while (!valid);
+  return userInput;
+}
+
+// eslint-disable-next-line no-unused-vars
+async function main() {
+  const age = await getValidInt("Please enter your age: ", 1, 120);
+  output(`You entered: ${age}`);
+  const height = await getValidInt("Please enter your height in inches: ", 1, 100);
+  output(`You entered: ${height}`);
+  const weight = await getValidInt("Please enter your weight in pounds: ", 1, 1000);
+  output(`You entered: ${weight}`);
 }
