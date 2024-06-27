@@ -20,14 +20,16 @@ function validateInt(value, min, max) {
 
 // eslint-disable-next-line no-unused-vars
 async function main() {
-  const userInput = await input("Enter a number between 1 and 10: ");
-  try {
-    if (validateInt(userInput, 1, 10)) {
-      output("You entered a valid number");
-    } else {
-      output("You entered an invalid number");
+  let valid;
+  do {
+    const userInput = await input("Enter a number between 1 and 10: ");
+    try {
+      valid = validateInt(userInput, 1, 10);
+      if (!valid) {
+        output("You entered an invalid number, please try again");
+      }
+    } catch (error) {
+      output(error);
     }
-  } catch (error) {
-    output(error);
-  }
+  } while (!valid);
 }
