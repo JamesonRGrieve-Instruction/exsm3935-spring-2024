@@ -11,16 +11,11 @@ function validateInt(value, min, max) {
   if (!Number.isInteger(Number(max))) {
     throw new Error("Maximum must be a number");
   }
-  let toReturn;
-  if (value < min || value > max) {
-    toReturn = false;
-  } else {
-    toReturn = true;
-  }
+
   // If you return a list of values outside of an array, only the last value will actually be returned.
   // If you want to return multiple values, you must return them in an array (or dictionary/object).
   //return value, min, max, toReturn;
-  return toReturn;
+  return !(value < min || value > max);
 }
 
 // eslint-disable-next-line no-unused-vars
