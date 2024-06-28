@@ -20,11 +20,11 @@ async function piggyBank() {
 
 function greeter(name, amount) {
   if (amount < 10) {
-    output(`Hello ${name}! You’ve stored ${amount} so far. Better keep saving!`);
+    output(`Hello ${name}! You've stored ${amount} so far. Better keep saving!`);
   } else if (amount < 100) {
-    output(`Hello ${name}! You’ve stored ${amount} so far. Good job!`);
+    output(`Hello ${name}! You've stored ${amount} so far. Good job!`);
   } else {
-    output(`Hello ${name}! You’ve stored ${amount} so far. You should really spend some of it!”`);
+    output(`Hello ${name}! You've stored ${amount} so far. You should really spend some of it!”`);
   }
 }
 // eslint-disable-next-line no-unused-vars
