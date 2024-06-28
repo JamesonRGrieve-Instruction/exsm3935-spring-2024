@@ -1,14 +1,33 @@
 // eslint-disable-next-line no-unused-vars
 /* global output, input */
-// eslint-disable-next-line no-unused-vars
-async function main() {
-  // This is where the code you're actually experimenting with goes.
-  let leftOperand = await input("Please enter a number: ");
-  let rightOperand = await input("Please enter another number: ");
-  // Because we don't know decisions yet, entering something that isn't a number will cause the result to be NaN (Not a Number).
-  let sum = Number(leftOperand) + Number(rightOperand);
-  output(sum);
+
+async function getName() {
+  let userName = (await input("What is your name?")).trim();
+  if (!userName) {
+    userName = "child1";
+  }
+  return userName;
 }
 
+async function piggyBank() {
+  const deposits = (await input("Please enter your deposits, separated by commas: ")).split(",");
+  let total = 0;
+  for (const deposit of deposits) {
+    total += Number(deposit);
+  }
+  return total;
+}
 
-
+function greeter(name, amount) {
+  if (amount < 10) {
+    output(`Hello ${name}! You’ve stored ${amount} so far. Better keep saving!`);
+  } else if (amount < 100) {
+    output(`Hello ${name}! You’ve stored ${amount} so far. Good job!`);
+  } else {
+    output(`Hello ${name}! You’ve stored ${amount} so far. You should really spend some of it!”`);
+  }
+}
+// eslint-disable-next-line no-unused-vars
+async function main() {
+  greeter(await getName(), await piggyBank());
+}
