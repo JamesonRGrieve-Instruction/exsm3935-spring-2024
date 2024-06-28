@@ -35,12 +35,31 @@ async function getValidInt(prompt, min, max) {
   return userInput;
 }
 
+function addToArray(array, value) {
+  array.push(value);
+}
+function addToInt(int, value) {
+  int += value;
+}
+
 // eslint-disable-next-line no-unused-vars
 async function main() {
+  /*
   const age = await getValidInt("Please enter your age: ", 1, 120);
   output(`You entered: ${age}`);
   const height = await getValidInt("Please enter your height in inches: ", 1, 100);
   output(`You entered: ${height}`);
   const weight = await getValidInt("Please enter your weight in pounds: ", 1, 1000);
   output(`You entered: ${weight}`);
+  */
+
+  const myArray = [1, 5, 10];
+  output(`Array before: ${myArray}`);
+  await addToArray(myArray, 20);
+  output(`Array after: ${myArray}`);
+
+  let myInt = 5;
+  output(`Int before: ${myInt}`);
+  await addToInt(myInt, 10);
+  output(`Int after: ${myInt}`);
 }
