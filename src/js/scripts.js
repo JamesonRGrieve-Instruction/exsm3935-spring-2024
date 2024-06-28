@@ -38,6 +38,9 @@ async function getValidInt(prompt, min, max) {
 function addToArray(array, value) {
   array.push(value);
 }
+function setKeyOfDictionary(dictionary) {
+  dictionary["key3"] = "value3";
+}
 function addToInt(int, value) {
   int += value;
 }
@@ -57,6 +60,11 @@ async function main() {
   output(`Array before: ${myArray}`);
   await addToArray(myArray, 20);
   output(`Array after: ${myArray}`);
+
+  const myDictionary = { key1: "value1", key2: "value2" };
+  output(`Dictionary before: ${Object.entries(myDictionary)}`);
+  await setKeyOfDictionary(myDictionary);
+  output(`Dictionary after: ${Object.entries(myDictionary)}`);
 
   let myInt = 5;
   output(`Int before: ${myInt}`);
